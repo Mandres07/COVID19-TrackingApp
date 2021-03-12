@@ -1,39 +1,20 @@
 import React from 'react';
-import { Card, CardContent, Typography, Grid } from '@material-ui/core';
+import { Typography, Grid } from '@material-ui/core';
+import CustomCard from './Card/Card';
 import styles from './Cards.module.css';
 
 const Cards = ({ data: { confirmed, recovered, deaths, lastUpdate } }) => {
    if (!confirmed) {
       return <Typography variant='overline'>Cargando información...</Typography>;
    }
-
+   var options = { weekday: 'short', year: 'numeric', month: 'short', day: 'numeric' };
+   const date = new Date(lastUpdate).toLocaleDateString('es-PA', options);
    return (
       <div className={styles.container}>
          <Grid container spacing={3} justify='center'>
-            <Grid item component={Card}>
-               <CardContent>
-                  <Typography color='textSecondary' gutterBottom>Infectados</Typography>
-                  <Typography variant='h5'>REAL DATA</Typography>
-                  <Typography color='textSecondary'>REAL DATE</Typography>
-                  <Typography variant='body2'>Number of active cases of COVID-19</Typography>
-               </CardContent>
-            </Grid>
-            <Grid item component={Card}>
-               <CardContent>
-                  <Typography color='textSecondary' gutterBottom>Recuperados</Typography>
-                  <Typography variant='h5'>REAL DATA</Typography>
-                  <Typography color='textSecondary'>REAL DATE</Typography>
-                  <Typography variant='body2'>Number of recoveries from COVID-19</Typography>
-               </CardContent>
-            </Grid>
-            <Grid item component={Card}>
-               <CardContent>
-                  <Typography color='textSecondary' gutterBottom>Decesos</Typography>
-                  <Typography variant='h5'>REAL DATA</Typography>
-                  <Typography color='textSecondary'>REAL DATE</Typography>
-                  <Typography variant='body2'>Number of deaths caused by COVID-19</Typography>
-               </CardContent>
-            </Grid>
+            <CustomCard label='Infectados' value={confirmed.value} date={date} description='Casos activos de COVID-19' />
+            <CustomCard label='Recuperados' value={recovered.value} date={date} description='Casos recuperados de COVID-19' />
+            <CustomCard label='Decesos' value={deaths.value} date={date} description='Decesos a causa del COVID-19' />
          </Grid>
       </div>
    );
