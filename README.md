@@ -6,6 +6,6 @@ https://github.com/mathdroid/covid-19-api API
 Your can see it live at:
 https://cranky-shockley-d5a89f.netlify.app/
 
-![alt text](/src/images/Capture?raw=true "Screenshot 1")
-![alt text](/src/images/Capture2?raw=true "Screenshot 2")
+![alt text](/src/images/Capture.jpg?raw=true "Screenshot 1")
+![alt text](/src/images/Capture2.jpg?raw=true "Screenshot 2")
 
